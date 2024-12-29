@@ -1,0 +1,11 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import { AppHeader } from "~/components/Header";
+import { SubHeader } from "~/components/SubHeader";
+---
+
+<BaseLayout>
+  <AppHeader client:visible />
+  <SubHeader client:visible />
+  <main><slot /></main>
+</BaseLayout>

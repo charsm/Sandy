@@ -1,0 +1,19 @@
+---
+import dayjs from "dayjs";
+import { Link } from "@nextui-org/react";
+const copyright = "CC BY-NC-SA 4.0";
+import { Config } from "~/config";
+---
+
+<footer class="flex justify-center w-full prose mx-auto mt-0 md:mt-10 mb-6">
+  <p>
+    <Link
+      isExternal
+      showAnchorIcon
+      href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    >
+      {copyright}
+    </Link>
+    2021-{dayjs().year()} © {Config.base.title}
+  </p>
+</footer>

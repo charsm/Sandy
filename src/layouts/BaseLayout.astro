@@ -1,0 +1,25 @@
+---
+import { ClientRouter } from "astro:transitions";
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="title" content={title} />
+    <ClientRouter />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
