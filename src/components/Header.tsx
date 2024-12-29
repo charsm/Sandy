@@ -6,9 +6,15 @@ import {
   NavbarContent,
   NavbarItem,
 } from "@nextui-org/react";
-import { Github, Rss } from "lucide-react";
+import { Github, Moon, Rss, Sun } from "lucide-react";
+import useTheme from "~/hooks/useTheme";
+import type { Theme } from "~/types/theme";
 
 export const AppHeader: React.FC = () => {
+  const { colorMode, theme, setTheme } = useTheme();
+  const switchTheme = (themeName: Theme) => {
+    setTheme(themeName);
+  };
   return (
     <Navbar shouldHideOnScroll>
       <NavbarBrand>
@@ -28,6 +34,15 @@ export const AppHeader: React.FC = () => {
         <NavbarItem>
           <Button isIconOnly variant="light">
             <Rss size={20} />
+          </Button>
+        </NavbarItem>
+        <NavbarItem>
+          <Button
+            variant="light"
+            isIconOnly
+            onPress={() => switchTheme(theme === "light" ? "dark" : "light")}
+          >
+            {colorMode === "light" ? <Moon size={20} /> : <Sun size={20} />}
           </Button>
         </NavbarItem>
       </NavbarContent>

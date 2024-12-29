@@ -16,3 +16,31 @@ import Prose from "~/components/Prose.astro";
   </main>
   <Footer />
 </MainLayout>
+<script>
+  // prevent flash when using view transitions in astro
+  const initColorMode = () => {
+    const storedTheme = JSON.parse(
+      window.localStorage.getItem("theme") ?? '"auto"'
+    );
+    let presetTheme;
+    if (storedTheme === "auto") {
+      presetTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    } else {
+      presetTheme = storedTheme;
+    }
+    if (presetTheme === "dark") {
+      document.documentElement.classList.add("dark");
+      document.documentElement.style.colorScheme = "dark";
+    } else {
+      document.documentElement.classList.remove("dark");
+      document.documentElement.style.colorScheme = "light";
+    }
+  };
+
+  // Runs on initial navigation
+  initColorMode();
+  // Runs on view transitions navigation
+  document.addEventListener("astro:after-swap", initColorMode);
+</script>

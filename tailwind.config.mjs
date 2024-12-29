@@ -7,8 +7,8 @@ export default {
     "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: "class",
   theme: {
-    darkMode: "class",
     extend: {},
   },
   plugins: [twTypography(), nextui()],

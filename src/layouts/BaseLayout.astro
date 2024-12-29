@@ -18,6 +18,29 @@ const { title, description } = Astro.props;
     <meta name="description" content={description} />
     <meta name="title" content={title} />
     <ClientRouter />
+    <script is:inline>
+      (function () {
+        const storedTheme = JSON.parse(
+          window.localStorage.getItem("theme") ?? '"auto"'
+        );
+        let presetTheme;
+        if (storedTheme === "auto") {
+          presetTheme = window.matchMedia("(prefers-color-scheme: dark)")
+            .matches
+            ? "dark"
+            : "light";
+        } else {
+          presetTheme = storedTheme;
+        }
+        if (presetTheme === "dark") {
+          document.documentElement.classList.add("dark");
+          document.documentElement.style.colorScheme = "dark";
+        } else {
+          document.documentElement.classList.remove("dark");
+          document.documentElement.style.colorScheme = "light";
+        }
+      })();
+    </script>
   </head>
   <body>
     <slot />
