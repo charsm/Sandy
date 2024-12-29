@@ -67,7 +67,6 @@ export default function useTheme(defaultTheme: Theme = "auto") {
   ) => {
     setValue(theme);
     setTheme(theme);
-    console.log("event", event);
     mouseEventRef.current = event;
   };
 

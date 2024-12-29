@@ -1,0 +1,16 @@
+---
+import PostLayout from "~/layouts/PostLayout.astro";
+import { Config } from "~/config";
+
+export const getStaticPaths = async () => {
+  return Config.categories.map((item) => {
+    return {
+      params: {
+        cateId: item.key,
+      },
+    };
+  });
+};
+---
+
+<PostLayout>ds</PostLayout>
