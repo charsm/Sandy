@@ -17,7 +17,6 @@ const { title, description } = Astro.props;
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="title" content={title} />
-    <link rel="stylesheet" href="../style/index.css" />
     <ClientRouter />
     <script is:inline>
       (function () {
@@ -47,3 +46,22 @@ const { title, description } = Astro.props;
     <slot />
   </body>
 </html>
+<style is:global>
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+  ::view-transition-old(root) {
+    z-index: 1;
+  }
+  ::view-transition-new(root) {
+    z-index: 9999;
+  }
+  .dark::view-transition-old(root) {
+    z-index: 9999;
+  }
+  .dark::view-transition-new(root) {
+    z-index: 1;
+  }
+</style>

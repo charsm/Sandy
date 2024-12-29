@@ -16,7 +16,6 @@ export const AppHeader: React.FC = () => {
     themeName: Theme,
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
-    console.log("Switching theme to", event);
     setTheme(themeName, event);
   };
   return (
