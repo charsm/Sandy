@@ -12,8 +12,12 @@ import type { Theme } from "~/types/theme";
 
 export const AppHeader: React.FC = () => {
   const { colorMode, theme, setTheme } = useTheme();
-  const switchTheme = (themeName: Theme) => {
-    setTheme(themeName);
+  const switchTheme = (
+    themeName: Theme,
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    console.log("Switching theme to", event);
+    setTheme(themeName, event);
   };
   return (
     <Navbar shouldHideOnScroll>
@@ -40,7 +44,9 @@ export const AppHeader: React.FC = () => {
           <Button
             variant="light"
             isIconOnly
-            onPress={() => switchTheme(theme === "light" ? "dark" : "light")}
+            onClick={(event) =>
+              switchTheme(theme === "light" ? "dark" : "light", event)
+            }
           >
             {colorMode === "light" ? <Moon size={20} /> : <Sun size={20} />}
           </Button>
