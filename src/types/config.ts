@@ -4,12 +4,15 @@ export type BaseConfig = {
   description?: string;
 };
 
-export type Category = {
+export type Menu = {
   title: string;
-  key: string;
+  url: string;
+  key?: string;
+  isJump?: boolean;
+  children?: Menu[];
 };
 
 export type BlogConfig = {
   base: BaseConfig;
-  categories: Category[];
+  menus: Menu[];
 };

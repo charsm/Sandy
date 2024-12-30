@@ -1,0 +1,16 @@
+---
+import BlogLayout from "~/layouts/BlogLayout.astro";
+import { Config } from "~/config";
+import { processMenu } from "~/utils/list";
+
+/**
+ * 注册SSG URL
+ */
+export function getStaticPaths() {
+  return processMenu(Config.menus, "", "blog");
+}
+
+const { parent, sub } = Astro.params;
+---
+
+<BlogLayout parent={parent} sub={sub}>{parent} - {sub}</BlogLayout>
