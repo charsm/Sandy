@@ -9,7 +9,11 @@ export default {
   ],
   darkMode: "class",
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["Noto Sans SC Variable"],
+      },
+    },
   },
   plugins: [twTypography(), nextui()],
 };

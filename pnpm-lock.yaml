@@ -17,6 +17,9 @@ importers:
       '@astrojs/tailwind':
         specifier: ^5.1.4
         version: 5.1.4(astro@5.1.1(jiti@1.21.7)(rollup@4.29.1)(typescript@5.7.2)(yaml@2.6.1))(tailwindcss@3.4.17)
+      '@fontsource-variable/noto-sans-sc':
+        specifier: ^5.1.1
+        version: 5.1.1
       '@nextui-org/react':
         specifier: ^2.6.10
         version: 2.6.10(@types/react@19.0.2)(framer-motion@11.15.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(tailwindcss@3.4.17)
@@ -475,6 +478,9 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
+
+  '@fontsource-variable/noto-sans-sc@5.1.1':
+    resolution: {integrity: sha512-kr4mr8vgNC3jrpnbL4kd1bznG53jtL3GKvUCdzzHuoyt3qoKtScS7oBNF5Wqkvw6Pkc8RHwBIUvEOzAbevV3dA==}
 
   '@formatjs/ecma402-abstract@2.3.1':
     resolution: {integrity: sha512-Ip9uV+/MpLXWRk03U/GzeJMuPeOXpJBSB5V1tjA6kJhvqssye5J5LoYLc7Z5IAHb7nR62sRoguzrFiVCP/hnzw==}
@@ -3774,6 +3780,8 @@ snapshots:
 
   '@esbuild/win32-x64@0.24.2':
     optional: true
+
+  '@fontsource-variable/noto-sans-sc@5.1.1': {}
 
   '@formatjs/ecma402-abstract@2.3.1':
     dependencies:
