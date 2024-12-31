@@ -43,7 +43,9 @@ export const AppHeader = () => {
   return (
     <Navbar shouldHideOnScroll>
       <NavbarBrand>
-        <p className="font-bold text-inherit">Eth.Young</p>
+        <Link href="/" color="foreground" className="font-bold">
+          {Config.base.title}
+        </Link>
       </NavbarBrand>
       <NavbarContent justify="end">
         {mainMenus.map((menu) => (

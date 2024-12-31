@@ -2,6 +2,9 @@
 import BlogLayout from "~/layouts/BlogLayout.astro";
 import { Config } from "~/config";
 import { processMenu } from "~/utils/list";
+import { groupByArray } from "~/utils/common";
+import { getCollection } from "astro:content";
+import dayjs from "dayjs";
 
 /**
  * 注册SSG URL
@@ -10,7 +13,47 @@ export function getStaticPaths() {
   return processMenu(Config.menus, "", "blog");
 }
 
+const allBlogPosts = await getCollection("posts");
+const posts = allBlogPosts.map((item) => ({
+  ...item,
+  ...item.data,
+  pubDate: dayjs(item.data.pubDate).year(),
+}));
+
 const { parent, sub } = Astro.params;
+const currentPostList =
+  groupByArray(posts, "menu").find((item) => item.key === sub)?.value || [];
+const groupedByYear = groupByArray(currentPostList, "pubDate");
 ---
 
-<BlogLayout parent={parent} sub={sub}>{parent} - {sub}</BlogLayout>
+<BlogLayout parent={parent as string} sub={sub as string}>
+  <div class="grid grid-cols-1 gap-4 space-y-28 py-20">
+    {
+      !groupedByYear.length ? (
+        <div>还没有任何文章哦</div>
+      ) : (
+        groupedByYear.map(({ key, value: posts }) => (
+          <div class="relative flex">
+            <div class="text-stroke-2 absolute -left-6 -top-16 select-none text-9xl font-bold text-default-100">
+              {dayjs(key).format("YYYY")}
+            </div>
+            <div class="flex w-full flex-col space-y-8 z-10">
+              {posts.map(({ id, data: { title, pubDate } }) => (
+                <a
+                  class="text-2xl text-default-500 cursor-pointer hover:text-primary-500 no-underline"
+                  href={`/post/${id}/`}
+                  title={title}
+                >
+                  {title}
+                  <span class="ml-2 text-xl text-secondary-300">
+                    {dayjs(pubDate).format("MM-DD")}
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))
+      )
+    }
+  </div>
+</BlogLayout>

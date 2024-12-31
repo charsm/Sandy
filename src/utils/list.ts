@@ -22,8 +22,8 @@ export const processMenu = (
     // 构建路径参数
     const pathParam: PathParams = {
       params: {
-        parent: parentUrl.replace(/^\//, ""),
-        sub: item.url?.replace(/^\//, ""),
+        parent: parentUrl.replace(/^\//, "") ?? "",
+        sub: item.url?.replace(/^\//, "") ?? "",
       },
     };
 
