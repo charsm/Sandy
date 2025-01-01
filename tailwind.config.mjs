@@ -11,7 +11,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Noto Sans SC Variable"],
+        sans: ["smiley-sans"],
       },
     },
   },

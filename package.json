@@ -6,13 +6,13 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "compress-font": "node scripts/optimizationFont.js"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.0.3",
     "@astrojs/react": "^4.1.2",
     "@astrojs/tailwind": "^5.1.4",
-    "@fontsource-variable/noto-sans-sc": "^5.1.1",
     "@nextui-org/react": "^2.6.10",
     "@tailwindcss/typography": "^0.5.15",
     "@types/react": "^19.0.2",
@@ -20,7 +20,10 @@
     "@vercel/og": "^0.6.4",
     "astro": "^5.1.1",
     "dayjs": "^1.11.13",
+    "fontmin": "^2.0.0",
     "framer-motion": "^11.15.0",
+    "glob": "^11.0.0",
+    "gray-matter": "^4.0.3",
     "lucide-react": "^0.469.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

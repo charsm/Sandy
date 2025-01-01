@@ -8,7 +8,6 @@ export interface Props {
   path?: string;
   pubDate?: string;
 }
-import "@fontsource-variable/noto-sans-sc";
 import Head from "~/components/Head.astro";
 ---
 
@@ -69,5 +68,13 @@ import Head from "~/components/Head.astro";
   }
   .dark::view-transition-new(root) {
     z-index: 1;
+  }
+
+  @font-face {
+    font-family: "smiley-sans";
+    src: url("/fonts/SmileySans-Oblique.otf.woff2") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
   }
 </style>
