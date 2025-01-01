@@ -17,6 +17,7 @@
     "@tailwindcss/typography": "^0.5.15",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
+    "@vercel/og": "^0.6.4",
     "astro": "^5.1.1",
     "dayjs": "^1.11.13",
     "framer-motion": "^11.15.0",

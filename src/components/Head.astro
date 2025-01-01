@@ -1,0 +1,65 @@
+---
+import { Config } from "~/config";
+export interface Props {
+  title?: string;
+  description?: string;
+  snapshot?: string;
+  path?: string;
+  pubDate?: string;
+}
+
+const {
+  title = Config.base.title,
+  description = Config.base.description,
+  snapshot,
+  path,
+  pubDate,
+} = Astro.props;
+---
+
+<link rel="sitemap" href="/sitemap-index.xml" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<!-- 网站分析 -->
+<script
+  data-goatcounter="https://my-account.goatcounter.com/count"
+  async
+  src="//gc.zgo.at/count.js"></script>
+
+<!-- 开放图谱标签 -->
+<meta property="og:title" content={title} />
+<meta property="og:type" content="website" />
+<meta property="article:author" content={Config.base.author} />
+{
+  description && (
+    <>
+      <meta property="og:description" content={description} />
+      <meta name="twitter:description" content={description} />
+    </>
+  )
+}
+{path && <meta content={`${Config.base.baseUrl}${path}`} property="og:url" />}
+{
+  snapshot && (
+    <>
+      <meta
+        property="og:image"
+        content={`${Config.base.baseUrl}/post/${snapshot}.png`}
+      />
+      <meta property="og:image:alt" content={description} />
+      <meta
+        name="twitter:image"
+        content={`${Config.base.baseUrl}/post/${snapshot}.png`}
+      />
+      <meta name="twitter:card" content="summary_large_image" />
+    </>
+  )
+}
+{
+  pubDate && (
+    <>
+      <meta property="article:published_time" content={pubDate} />
+      <meta property="article:modified_time" content={pubDate} />
+    </>
+  )
+}

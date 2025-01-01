@@ -2,6 +2,7 @@ export type BaseConfig = {
   title: string;
   baseUrl?: string;
   description?: string;
+  author?: string;
 };
 
 export type Menu = {

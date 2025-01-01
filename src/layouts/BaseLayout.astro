@@ -4,19 +4,23 @@ import { ClientRouter } from "astro:transitions";
 export interface Props {
   title?: string;
   description?: string;
+  snapshot?: string;
+  path?: string;
+  pubDate?: string;
 }
 import "@fontsource-variable/noto-sans-sc";
-const { title, description } = Astro.props;
+import Head from "~/components/Head.astro";
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta content="rgb(33, 39, 55)" name="theme-color" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <meta name="title" content={title} />
+    <Head {...Astro.props} />
     <ClientRouter />
     <script is:inline>
       (function () {
@@ -43,7 +47,9 @@ const { title, description } = Astro.props;
     </script>
   </head>
   <body>
-    <slot />
+    <section class="flex flex-col bg-background h-screen">
+      <slot />
+    </section>
   </body>
 </html>
 <style is:global>
