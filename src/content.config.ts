@@ -6,7 +6,7 @@ const posts = defineCollection({
     isDraft: z.boolean().optional().default(false),
     title: z.string(),
     pubDate: z.date(),
-    menu: z.enum(["tech", "reflection", "tech"]),
+    menu: z.enum(["tech", "reflection", "note", "log"]),
     description: z.string().optional().default(""),
     comment: z.boolean().optional().default(false),
   }),

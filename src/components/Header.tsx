@@ -3,8 +3,8 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-} from "@nextui-org/navbar";
-import { Button } from "@nextui-org/button";
+} from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import { Link } from "@nextui-org/link";
 import { Github, Moon, Rss, Sun } from "lucide-react";
 import useTheme from "~/hooks/useTheme";

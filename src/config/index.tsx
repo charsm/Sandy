@@ -25,12 +25,11 @@ export const Config: BlogConfig = {
           title: "笔记",
           url: "/note",
         },
+        {
+          title: "日志",
+          url: "/log",
+        },
       ],
-    },
-    {
-      title: "图片",
-      url: "/gallery",
-      children: [{ title: "风景", url: "/scenery" }],
     },
   ],
 };

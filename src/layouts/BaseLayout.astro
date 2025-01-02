@@ -9,6 +9,7 @@ export interface Props {
   pubDate?: string;
 }
 import Head from "~/components/Head.astro";
+import RiverBackground from "~/components/RiverBackground";
 ---
 
 <html lang="en">
@@ -46,6 +47,7 @@ import Head from "~/components/Head.astro";
     </script>
   </head>
   <body>
+    <RiverBackground client:only="react" />
     <section class="flex flex-col bg-background h-screen">
       <slot />
     </section>
