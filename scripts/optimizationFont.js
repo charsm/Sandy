@@ -5,6 +5,8 @@ import matter from "gray-matter";
 const markdownFiles = glob.sync(["data/**/*.{md,mdx}", "src/pages/**/*.mdx"]);
 const frontMatters = markdownFiles.map((file) => matter.read(file));
 
+const otherTexts = ['图片'].join()
+
 const textSubset = frontMatters
   .map(
     ({ data: { title, description }, content }) =>
@@ -16,7 +18,7 @@ const fontMin = new Fontmin()
   .src("scripts/fonts/SmileySans-Oblique.ttf")
   .use(
     Fontmin.glyph({
-      text: textSubset,
+      text: textSubset + otherTexts,
       hinting: false,
     })
   )
@@ -24,7 +26,6 @@ const fontMin = new Fontmin()
   .dest("public/fonts/");
 // 开始精简字体
 fontMin.run((err, files) => {
-  console.log("files", files);
   if (err) throw err;
   console.log("compress font success\n");
 });

@@ -10,7 +10,7 @@ import { Github, Moon, Rss, Sun } from "lucide-react";
 import useTheme from "~/hooks/useTheme";
 import type { Theme } from "~/types/theme";
 import { Config } from "~/config";
-import { useMemo } from "react";
+import React, { useMemo } from "react";
 import { removeSlash } from "~/utils/common";
 
 export const AppHeader = () => {
@@ -61,7 +61,7 @@ export const AppHeader = () => {
           </Button>
         </NavbarItem>
         <NavbarItem>
-          <Button isIconOnly variant="light">
+          <Button isIconOnly variant="light" as={Link} href={'/rss.xml'}>
             <Rss size={20} />
           </Button>
         </NavbarItem>
