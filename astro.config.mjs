@@ -12,5 +12,5 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'http://localhost:4321',
-  integrations: [tailwind(), react(), mdx(), sitemap()]
+  integrations: [ react(), tailwind(), mdx(), sitemap()]
 });

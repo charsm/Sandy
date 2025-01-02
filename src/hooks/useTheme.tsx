@@ -2,7 +2,7 @@ import { useLocalStorage, useMediaQuery } from "usehooks-ts";
 import React, { useEffect, useRef, useState } from "react";
 import type { Theme } from "~/types/theme";
 
-export default function useTheme(defaultTheme: Theme = "auto") {
+export default function UseTheme(defaultTheme: Theme = "auto") {
   const isMatchDark = useMediaQuery("(prefers-color-scheme: dark)");
   const [value, setValue] = useLocalStorage<Theme>("theme", defaultTheme);
   const [theme, setTheme] = useState<Theme>(value);

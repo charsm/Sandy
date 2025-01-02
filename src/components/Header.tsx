@@ -13,8 +13,9 @@ import { Config } from "~/config";
 import React, { useMemo } from "react";
 import { removeSlash } from "~/utils/common";
 
-export const AppHeader = () => {
+export default function AppHeader () {
   const { colorMode, theme, setTheme } = useTheme();
+  if (typeof window !== 'undefined') return null
   const switchTheme = (
     themeName: Theme,
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -28,9 +29,7 @@ export const AppHeader = () => {
         const [firstChildItem] = menu.children;
         return {
           title: menu.title,
-          url: `/${removeSlash(menu.url)}-${removeSlash(firstChildItem.url)}/${
-            menu.key
-          }`,
+          url: `/${removeSlash(menu.url)}-${removeSlash(firstChildItem.url)}/${menu.key}`,
         };
       }
       return {
