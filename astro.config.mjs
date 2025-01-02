@@ -11,6 +11,9 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
+  prefetch: {
+    defaultStrategy: 'viewport'
+  },
   site: 'http://localhost:4321',
   integrations: [ react(), tailwind(), mdx(), sitemap()]
 });

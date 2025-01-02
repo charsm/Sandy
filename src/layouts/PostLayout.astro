@@ -1,5 +1,5 @@
 ---
-import AppHeader from "~/components/Header";
+import AppHeader from "~/components/Header.astro";
 import Footer from "~/components/Footer.astro";
 import Prose from "~/components/Prose.astro";
 import BaseLayout from "./BaseLayout.astro";
@@ -23,7 +23,7 @@ const { title, description, path, pubDate, snapshot } = Astro.props;
   pubDate={pubDate}
   snapshot={snapshot}
 >
-  <AppHeader client:visible />
+  <AppHeader />
   <main class="px-6 md:px-0 flex-1 py-16 w-full" transition:animate={animation}>
     <Prose>
       <slot />

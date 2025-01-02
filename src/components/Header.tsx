@@ -12,9 +12,12 @@ import type { Theme } from "~/types/theme";
 import { Config } from "~/config";
 import React, { useMemo } from "react";
 import { removeSlash } from "~/utils/common";
+import useClient from "~/hooks/useClient";
+import ShowProvider from "./ShowProvider";
 
 export default function AppHeader() {
   const { colorMode, theme, setTheme } = useTheme();
+  const isClient = useClient();
   const switchTheme = (
     themeName: Theme,
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -41,42 +44,44 @@ export default function AppHeader() {
   }, [Config.menus]);
 
   return (
-    <Navbar shouldHideOnScroll>
-      <NavbarBrand>
-        <Link href="/" color="foreground" className="font-bold">
-          {Config.base.title}
-        </Link>
-      </NavbarBrand>
-      <NavbarContent justify="end">
-        {mainMenus.map((menu) => (
-          <NavbarItem key={menu.title}>
-            <Link color="foreground" href={menu.url}>
-              {menu.title}
-            </Link>
+    <Navbar>
+      <ShowProvider isClient={isClient}>
+        <NavbarBrand>
+          <Link href="/" color="foreground" className="font-bold">
+            {Config.base.title}
+          </Link>
+        </NavbarBrand>
+        <NavbarContent justify="end">
+          {mainMenus.map((menu) => (
+            <NavbarItem key={menu.title}>
+              <Link color="foreground" href={menu.url}>
+                {menu.title}
+              </Link>
+            </NavbarItem>
+          ))}
+          <NavbarItem className="hidden lg:flex">
+            <Button isIconOnly variant="light">
+              <Github size={20} />
+            </Button>
           </NavbarItem>
-        ))}
-        <NavbarItem className="hidden lg:flex">
-          <Button isIconOnly variant="light">
-            <Github size={20} />
-          </Button>
-        </NavbarItem>
-        <NavbarItem>
-          <Button isIconOnly variant="light" as={Link} href={"/rss.xml"}>
-            <Rss size={20} />
-          </Button>
-        </NavbarItem>
-        <NavbarItem>
-          <Button
-            variant="light"
-            isIconOnly
-            onClick={(event) =>
-              switchTheme(theme === "light" ? "dark" : "light", event)
-            }
-          >
-            {colorMode === "light" ? <Moon size={20} /> : <Sun size={20} />}
-          </Button>
-        </NavbarItem>
-      </NavbarContent>
+          <NavbarItem>
+            <Button isIconOnly variant="light" as={Link} href={"/rss.xml"}>
+              <Rss size={20} />
+            </Button>
+          </NavbarItem>
+          <NavbarItem>
+            <Button
+              variant="light"
+              isIconOnly
+              onClick={(event) =>
+                switchTheme(theme === "light" ? "dark" : "light", event)
+              }
+            >
+              {colorMode === "light" ? <Moon size={20} /> : <Sun size={20} />}
+            </Button>
+          </NavbarItem>
+        </NavbarContent>
+      </ShowProvider>
     </Navbar>
   );
 }

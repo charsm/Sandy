@@ -24,7 +24,7 @@ export default function UseTheme(defaultTheme: Theme = "auto") {
   }, []);
 
   useEffect(() => {
-    const domReady = document?.startViewTransition(() => {
+    const domReady = document.startViewTransition(() => {
       if (colorMode === "dark") {
         document.documentElement.classList.add("dark");
         document.documentElement.style.colorScheme = "dark";

@@ -43,6 +43,7 @@ const groupedByYear = groupByArray(currentPostList, "pubDate");
                   class="text-2xl text-default-500 cursor-pointer hover:text-primary-500 no-underline"
                   href={`/post/${id}/`}
                   title={title}
+                  data-astro-prefetch
                 >
                   {title}
                   <span class="ml-2 text-xl text-secondary-300">

@@ -17,7 +17,6 @@
     "@astrojs/tailwind": "^5.1.4",
     "@giscus/react": "^3.1.0",
     "@nextui-org/button": "^2.2.8",
-    "@nextui-org/link": "^2.2.6",
     "@nextui-org/navbar": "^2.2.7",
     "@nextui-org/react": "^2.6.10",
     "@tailwindcss/typography": "^0.5.15",
