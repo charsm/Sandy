@@ -6,7 +6,7 @@ import SubHeader from "~/components/SubHeader.astro";
 import Prose from "~/components/Prose.astro";
 import Footer from "~/components/Footer.astro";
 import type { Menu } from "~/types/config";
-import {animation} from "~/utils/common";
+import { animation } from "~/utils/common";
 
 export interface Props {
   parent: string;
@@ -24,8 +24,6 @@ const curSubMenu =
 const subMenuTitle = curSubMenu.title
   ? `${curSubMenu.title} - ${Config.base.title}`
   : "";
-
-
 ---
 
 <BaseLayout title={subMenuTitle} description={subMenuTitle}>

@@ -8,6 +8,7 @@ const posts = defineCollection({
     pubDate: z.date(),
     menu: z.enum(["tech", "reflection", "tech"]),
     description: z.string().optional().default(""),
+    comment: z.boolean().optional().default(false),
   }),
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./data/posts" }),
 });

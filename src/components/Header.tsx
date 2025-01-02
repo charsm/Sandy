@@ -1,11 +1,11 @@
 import {
-  Button,
-  Link,
   Navbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-} from "@nextui-org/react";
+} from "@nextui-org/navbar";
+import { Button } from "@nextui-org/button";
+import { Link } from "@nextui-org/link";
 import { Github, Moon, Rss, Sun } from "lucide-react";
 import useTheme from "~/hooks/useTheme";
 import type { Theme } from "~/types/theme";
@@ -13,9 +13,8 @@ import { Config } from "~/config";
 import React, { useMemo } from "react";
 import { removeSlash } from "~/utils/common";
 
-export default function AppHeader () {
+export default function AppHeader() {
   const { colorMode, theme, setTheme } = useTheme();
-  if (typeof window !== 'undefined') return null
   const switchTheme = (
     themeName: Theme,
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -29,7 +28,9 @@ export default function AppHeader () {
         const [firstChildItem] = menu.children;
         return {
           title: menu.title,
-          url: `/${removeSlash(menu.url)}-${removeSlash(firstChildItem.url)}/${menu.key}`,
+          url: `/${removeSlash(menu.url)}-${removeSlash(firstChildItem.url)}/${
+            menu.key
+          }`,
         };
       }
       return {
@@ -60,7 +61,7 @@ export default function AppHeader () {
           </Button>
         </NavbarItem>
         <NavbarItem>
-          <Button isIconOnly variant="light" as={Link} href={'/rss.xml'}>
+          <Button isIconOnly variant="light" as={Link} href={"/rss.xml"}>
             <Rss size={20} />
           </Button>
         </NavbarItem>
@@ -78,4 +79,4 @@ export default function AppHeader () {
       </NavbarContent>
     </Navbar>
   );
-};
+}

@@ -1,4 +1,4 @@
-import type {TransitionDirectionalAnimations} from "astro";
+import type { TransitionDirectionalAnimations } from "astro";
 
 export const removeSlash = (str: string) => str.replace(/^\//, "");
 
@@ -22,24 +22,24 @@ export const groupByArray = <T>(array: T[], key: keyof T) => {
 };
 
 export const animation: TransitionDirectionalAnimations = {
-  forwards:{
+  forwards: {
     old: {
-      name: 'slide-enter',
-      duration: '0.35s',
+      name: "slide-in",
     },
     new: {
-      name: 'slide-out',
-      duration: '0.35s',
+      name: "slide-in",
+      duration: "0.35s",
+      easing: "ease-in-out",
     },
   },
   backwards: {
     old: {
-      name: 'slide-out',
-      duration: '0.35s',
+      name: "slide-in",
     },
     new: {
-      name: 'slide-enter',
-      duration: '0.35s',
+      name: "slide-in",
+      duration: "0.35s",
+      easing: "ease-in-out",
     },
-  }
-}
+  },
+};

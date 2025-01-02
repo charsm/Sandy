@@ -20,7 +20,7 @@ import Head from "~/components/Head.astro";
     <meta content="rgb(33, 39, 55)" name="theme-color" />
     <meta name="generator" content={Astro.generator} />
     <Head {...Astro.props} />
-    <ClientRouter fallback={'animate'} />
+    <ClientRouter fallback={"animate"} />
     <script is:inline>
       (function () {
         const storedTheme = JSON.parse(
@@ -77,7 +77,7 @@ import Head from "~/components/Head.astro";
     font-style: normal;
     font-display: swap;
   }
-  @keyframes slide-enter {
+  @keyframes slide-in {
     0% {
       transform: translateY(10px);
       opacity: 0;
@@ -88,17 +88,4 @@ import Head from "~/components/Head.astro";
       opacity: 1;
     }
   }
-
-  @keyframes slide-out {
-    0% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    to {
-      transform: translateY(10px);
-      opacity: 0;
-    }
-  }
-
 </style>

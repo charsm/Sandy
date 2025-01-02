@@ -3,6 +3,7 @@ title: Hello World
 description: Hello World
 pubDate: 2021-10-01
 menu: "tech"
+comment: true
 ---
 
 這篇文章旨在作為快速參考與展示。要更多完整的資訊，請見 [John Gruber 原本的規格](http://daringfireball.net/projects/markdown/)與 [Github 偏好的 Markdown（Github-flavored Markdown，簡寫為 GFM）資訊頁](http://github.github.com/github-flavored-markdown/)。
