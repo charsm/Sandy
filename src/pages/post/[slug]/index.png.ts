@@ -17,5 +17,5 @@ export async function GET({
 }: {
   props: CollectionEntry<"posts">;
 }): Promise<APIRoute> {
-  return generateOgImage(props);
+  return generateOgImage(props) as unknown as APIRoute;
 }

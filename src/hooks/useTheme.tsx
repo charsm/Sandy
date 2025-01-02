@@ -1,5 +1,5 @@
 import { useLocalStorage, useMediaQuery } from "usehooks-ts";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import type { Theme } from "~/types/theme";
 
 export default function useTheme(defaultTheme: Theme = "auto") {
@@ -24,7 +24,7 @@ export default function useTheme(defaultTheme: Theme = "auto") {
   }, []);
 
   useEffect(() => {
-    const domReady = document.startViewTransition(() => {
+    const domReady = document?.startViewTransition(() => {
       if (colorMode === "dark") {
         document.documentElement.classList.add("dark");
         document.documentElement.style.colorScheme = "dark";
