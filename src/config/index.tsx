@@ -3,10 +3,13 @@ import type { BlogConfig } from "~/types/config";
 
 export const Config: BlogConfig = {
   base: {
-    title: "NextUI Blog",
-    description: "A blog built with NextUI",
-    baseUrl: "http://localhost:4321",
-    author: "NextUI",
+    title: "Ethan Young",
+    description: "I am a software engineer and a writer.",
+    baseUrl: "https://www.ethyoung.me",
+    author: "Ethan Young",
+  },
+  social: {
+    github: "https://github.com/charlesMYoung",
   },
   menus: [
     {

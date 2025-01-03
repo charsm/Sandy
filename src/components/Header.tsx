@@ -76,7 +76,13 @@ export default function AppHeader() {
             </NavbarItem>
           ))}
           <NavbarItem>
-            <Button isIconOnly variant="light">
+            <Button
+              isIconOnly
+              variant="light"
+              as={Link}
+              href={Config.social.github}
+              size={matches ? "md" : "sm"}
+            >
               <Github size={20} />
             </Button>
           </NavbarItem>

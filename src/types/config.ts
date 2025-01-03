@@ -17,4 +17,7 @@ export type Menu = {
 export type BlogConfig = {
   base: BaseConfig;
   menus: Menu[];
+  social: {
+    github: string;
+  };
 };

@@ -35,7 +35,14 @@ const articleTimeFormat = dayjs(pubDate).format("YYYY-MM-DD");
     </>
   )
 }
-{path && <meta content={`${Config.base.baseUrl}${path}`} property="og:url" />}
+{
+  path && (
+    <>
+      <meta content={`${Config.base.baseUrl}${path}`} property="og:url" />
+      <meta property="og:site_name" content={`${Config.base.baseUrl}${path}`} />
+    </>
+  )
+}
 {
   snapshot && (
     <>
