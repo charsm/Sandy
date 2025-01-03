@@ -1,3 +1,4 @@
+import { NotebookText } from "lucide-react";
 import type { BlogConfig } from "~/types/config";
 
 export const Config: BlogConfig = {
@@ -12,6 +13,7 @@ export const Config: BlogConfig = {
       title: "文章",
       url: "/blog",
       key: "blog",
+      icon: <NotebookText size={20} />,
       children: [
         {
           title: "随笔",

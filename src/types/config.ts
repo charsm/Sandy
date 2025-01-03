@@ -10,6 +10,7 @@ export type Menu = {
   url: string;
   key?: string;
   isJump?: boolean;
+  icon?: React.ReactNode;
   children?: Menu[];
 };
 

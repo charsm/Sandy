@@ -8,7 +8,7 @@ export interface Props {
   path?: string;
   pubDate?: string;
 }
-import Head from "~/components/Head.astro";
+import HeadTag from "~/components/HeadTag.astro";
 import RiverBackground from "~/components/RiverBackground";
 ---
 
@@ -20,7 +20,7 @@ import RiverBackground from "~/components/RiverBackground";
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta content="rgb(33, 39, 55)" name="theme-color" />
     <meta name="generator" content={Astro.generator} />
-    <Head {...Astro.props} />
+    <HeadTag {...Astro.props} />
     <ClientRouter fallback={"animate"} />
     <script is:inline>
       (function () {

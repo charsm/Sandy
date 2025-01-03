@@ -1,44 +1,31 @@
 import { useLocalStorage, useMediaQuery } from "usehooks-ts";
-import React, { useEffect, useRef, useState } from "react";
-import type { Theme } from "~/types/theme";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+  useMemo,
+} from "react";
+import type { RectBounds, Theme } from "~/types/theme";
+import { themeAtom } from "~/store";
 
 export default function UseTheme(defaultTheme: Theme = "auto") {
   const isMatchDark = useMediaQuery("(prefers-color-scheme: dark)");
   const [value, setValue] = useLocalStorage<Theme>("theme", defaultTheme);
   const [theme, setTheme] = useState<Theme>(value);
-  const mouseEventRef =
-    useRef<React.MouseEvent<HTMLButtonElement, MouseEvent>>(null);
+  const rectBoundsRef = useRef<RectBounds>(null);
 
-  const colorMode =
-    theme === "auto"
-      ? value === "auto"
-        ? isMatchDark
-          ? "dark"
-          : "light"
-        : value
-      : theme;
-  useEffect(() => {
-    if (value && value !== theme) {
-      setTheme(value);
+  // 简化 colorMode 计算逻辑
+  const colorMode = useMemo(() => {
+    if (theme === "auto") {
+      return value === "auto" ? (isMatchDark ? "dark" : "light") : value;
     }
-  }, []);
+    return theme;
+  }, [theme, value, isMatchDark]);
 
-  useEffect(() => {
-    const domReady = document.startViewTransition(() => {
-      if (colorMode === "dark") {
-        document.documentElement.classList.add("dark");
-        document.documentElement.style.colorScheme = "dark";
-      }
-      if (colorMode === "light") {
-        document.documentElement.classList.remove("dark");
-        document.documentElement.style.colorScheme = "light";
-      }
-    });
-    domReady.ready.then(() => {
-      const { clientX, clientY } = mouseEventRef.current || {
-        clientX: 0,
-        clientY: 0,
-      };
+  // 提取动画逻辑
+  const animateThemeTransition = useCallback(
+    (clientX: number, clientY: number) => {
       const radius = Math.hypot(
         Math.max(clientX, innerWidth - clientX),
         Math.max(clientY, innerHeight - clientY)
@@ -58,21 +45,41 @@ export default function UseTheme(defaultTheme: Theme = "auto") {
               : "::view-transition-new(root)",
         }
       );
-    });
-  }, [colorMode]);
+    },
+    [colorMode]
+  );
 
-  const setThemeAndStorage = (
-    theme: Theme,
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    setValue(theme);
-    setTheme(theme);
-    mouseEventRef.current = event;
-  };
+  // 同步主题状态
+  useEffect(() => {
+    if (value && value !== theme) setTheme(value);
+  }, [value]);
+
+  // 更新 DOM 和动画
+  useEffect(() => {
+    themeAtom.set(colorMode);
+    const domReady = document.startViewTransition(() => {
+      document.documentElement.classList.toggle("dark", colorMode === "dark");
+      document.documentElement.style.colorScheme = colorMode;
+    });
+
+    domReady.ready.then(() => {
+      const { x = 0, y = 0 } = rectBoundsRef.current || {};
+      animateThemeTransition(x, y);
+    });
+  }, [colorMode, animateThemeTransition]);
+
+  const setThemeAndStorage = useCallback(
+    (newTheme: Theme, event: RectBounds) => {
+      setValue(newTheme);
+      setTheme(newTheme);
+      rectBoundsRef.current = event;
+    },
+    [setValue]
+  );
 
   return {
-    colorMode: colorMode,
-    theme: theme,
+    colorMode,
+    theme,
     setTheme: setThemeAndStorage,
   };
 }

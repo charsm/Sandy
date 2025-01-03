@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useCallback, useMemo } from "react";
 import type { P5I } from "p5i";
 import { p5i } from "p5i";
 import useTheme from "~/hooks/useTheme";
+import { useStore } from "@nanostores/react";
+import { themeAtom } from "~/store";
 
 const { random, trunc, min } = Math;
 const {
@@ -106,9 +108,11 @@ function draw(
 }
 
 const RiverBackground: React.FC = () => {
+  const $themeAtom = useStore(themeAtom);
   const canvasRef = useRef<HTMLDivElement | null>(null);
-  const { theme } = useTheme();
-  const isDark = useMemo(() => theme === "dark", [theme]);
+  const isDark = useMemo(() => {
+    return $themeAtom === "dark";
+  }, [$themeAtom]);
   const dimensionsRef = useRef({
     width: window.innerWidth,
     height: window.innerHeight,
